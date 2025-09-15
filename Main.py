@@ -28,23 +28,20 @@ def getDeviation(metod, time, h, X, a, rossler, name):
 
 
 if __name__ == "__main__":
-    # attractor = RosslerAttractor()
-    # a = [0, 0.2, 0.2, 5.7]
-
-    attractor = LorenzAttractor()
-    a = [1, 10, 28, 8 / 3]
-
+    rossler = RosslerAttractor()  # Создаем экземпляр класса
     X = [0.1, 0.1, 0.1]
+    a = [0.5, 10, 28, 8/3]
     time = 100
-    h = 0.001
+    h = 0.00001
+    solve(Eiler(), time, h, X, a, rossler, "Метод эйлера")
+    solve(RungeKutta2(), time, h, X, a, rossler, "Неявный метод Рунге — Кутты второго порядка")
+    solve(CD(), time, h, X, a, rossler, "КД")
+    solve(RungeKutta4(), time, h, X, a, rossler, "Классический метод Рунге — Кутты четвёртого порядка")
+    getDeviation(Eiler(), time, h, X, a, rossler, "Метод эйлера – ошибка")
+    getDeviation(CD(), time, h, X, a, rossler, "КД – ошибка")
+    #getDeviation(CD(), time, 0.00001, X, a, rossler, "КД")
+    getDeviation(RungeKutta2(), time, 0.00001, X, a, rossler, "Неявный метод Рунге — Кутты второго порядка– ошибка")
+    #getDeviation(RungeKutta2(), time, 0.000001, X, a, rossler, "Неявный метод Рунге — Кутты второго порядка– ошибка")
 
-    solve(Eiler(), time, h, X, a, attractor, "Метод эйлера")
-    solve(RungeKutta2(), time, h, X, a, attractor, "Неявный метод Рунге — Кутты второго порядка")
-    solve(CD(), time, h, X, a, attractor, "Метод Бутусова")
-    solve(RungeKutta4(), time, h, X, a, attractor, "Классический метод Рунге — Кутты четвёртого порядка")
-    time = 10
-    getDeviation(Eiler(), time, h, X, a, attractor, "Погрешность метода эйлера")
-    getDeviation(RungeKutta2(), time, h, X, a, attractor, "Погрешность неявного метода Рунге — Кутты второго порядка")
-    getDeviation(CD(), time, h, X, a, attractor, "Погрешность метода Бутусова")
 
 #
