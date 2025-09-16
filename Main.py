@@ -39,12 +39,12 @@ if __name__ == "__main__":
     h = 0.001
 
     solve(Eiler(), time, h, X, a, attractor, "Метод эйлера")
-    solve(RungeKutta2(), time, h, X, a, attractor, "Неявный метод Рунге — Кутты второго порядка")
+    solve(RungeKutta2(), time, h, X, a, attractor, "Метод средней точки")
     solve(CD(), time, h, X, a, attractor, "Метод Бутусова")
     solve(RungeKutta4(), time, h, X, a, attractor, "Классический метод Рунге — Кутты четвёртого порядка")
     time = 10
     getDeviation(Eiler(), time, h, X, a, attractor, "Погрешность метода эйлера")
-    getDeviation(RungeKutta2(), time, h, X, a, attractor, "Погрешность неявного метода Рунге — Кутты второго порядка")
+    getDeviation(RungeKutta2(), time, h, X, a, attractor, "Погрешность метода средней точки")
     getDeviation(CD(), time, h, X, a, attractor, "Погрешность метода Бутусова")
 
 #
